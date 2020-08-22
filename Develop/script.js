@@ -1,6 +1,6 @@
 // Assignment code here
 function generatePassword() {
-  //Set up password criteria variables
+  //Setup password criteria variables
   var useLowercase = false;
   var useUppercase = false;
   var useNumeric = false;
@@ -35,11 +35,11 @@ function generatePassword() {
     useNumeric = confirm("Use numbers?");
     useSpecial = confirm("Use special characters?");
 
-    // Prompt if the user wants to try again or cancel password creation
+    // If no criteria were selected, prompt if the user wants to try again or cancel password creation
     if(!useLowercase && !useUppercase && !useNumeric && !useSpecial){
       var tryAgain = confirm("No password criteria were selected. Do you want to try again or cancel password creaction?");
       
-      //If the user does not want to try again, then they have canceled password creation
+      // If the user does not want to try again, then they have canceled password creation
       if(!tryAgain){
         alert("Password creation has been canceled");
         // Return an empty string as no password was created
