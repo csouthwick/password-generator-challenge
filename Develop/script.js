@@ -6,6 +6,8 @@ function generatePassword() {
   var useNumeric = false;
   var useSpecial = false;
 
+
+  
   // Prompt for the password length
   var pwLength = prompt("How long should the password be? Enter a whole number between 8 and 128.");
 
@@ -27,7 +29,9 @@ function generatePassword() {
   }
   console.log(pwLength);
 
-  // While loop to ensure at least on criteria is selected
+
+
+  // While loop to ensure at least one criteria is selected
   while(!useLowercase && !useUppercase && !useNumeric && !useSpecial){
     // Prompt for each criteria
     useLowercase = confirm("Use lowercase characters?");
