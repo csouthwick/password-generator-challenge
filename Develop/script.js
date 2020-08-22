@@ -38,7 +38,7 @@ function generatePassword() {
 
 
   // While loop to ensure at least one criteria is selected
-  while(!useLowercase && !useUppercase && !useNumeric && !useSpecial){
+  while (!useLowercase && !useUppercase && !useNumeric && !useSpecial) {
     // Prompt for each criteria
     useLowercase = confirm("Use lowercase characters?");
     useUppercase = confirm("Use uppercase characters?");
@@ -46,11 +46,11 @@ function generatePassword() {
     useSpecial = confirm("Use special characters?");
 
     // If no criteria were selected, prompt if the user wants to try again or cancel password creation
-    if(!useLowercase && !useUppercase && !useNumeric && !useSpecial){
+    if (!useLowercase && !useUppercase && !useNumeric && !useSpecial) {
       var tryAgain = confirm("No password criteria were selected. Do you want to try again or cancel password creaction?");
-      
+
       // If the user does not want to try again, then they have canceled password creation
-      if(!tryAgain){
+      if (!tryAgain) {
         alert("Password creation has been canceled");
         // Return an empty string as no password was created
         return "";
@@ -61,28 +61,28 @@ function generatePassword() {
 
 
   // Build the array of chosen characters to use in the password
-  if(useLowercase){
+  if (useLowercase) {
     // Lowercase characters are character codes 97 - 122
-    for(var i = 97; i <= 122; i++){
+    for (var i = 97; i <= 122; i++) {
       pwCharacters.push(String.fromCharCode(i));
     }
   }
 
-  if(useUppercase){
+  if (useUppercase) {
     // Uppercase characters are character codes 65 - 90
-    for(var i = 65; i <= 90; i++){
+    for (var i = 65; i <= 90; i++) {
       pwCharacters.push(String.fromCharCode(i));
     }
   }
 
-  if(useNumeric){
+  if (useNumeric) {
     // For numbers, it is more readable to use the toString function while looping i from 0 - 9
-    for(var i = 0; i <= 9; i++){
+    for (var i = 0; i <= 9; i++) {
       pwCharacters.push(i.toString());
     }
   }
 
-  if(useSpecial){
+  if (useSpecial) {
     // Split the string of special characters into an array
     var specialCharArray = specialCharStr.split("");
     // Concatinate the array of special characters to the end of the pwCharacters array
@@ -91,6 +91,20 @@ function generatePassword() {
 
   console.log(pwCharacters);
 
+
+
+  // Generate password, start with an empty string then add to it
+  var passwordStr = "";
+  // Loop to create the length of password asked for by the user
+  for (var i = 0; i < pwLength; i++) {
+    // Generate a random number between 0 and up to pwCharacters.length, then take the floor of that to ensure it is an integer [0 .. n-1]
+    var randomIndex = Math.floor(Math.random() * pwCharacters.length);
+    // Use the randomIndex to pick a random character from the pwCharacters array and add it the the final password
+    passwordStr += pwCharacters[randomIndex];
+  }
+
+  // Return the final password
+  return passwordStr;
 }
 
 // Get references to the #generate element
