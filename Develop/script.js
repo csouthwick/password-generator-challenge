@@ -1,13 +1,19 @@
 // Assignment code here
 function generatePassword() {
-  //Setup password criteria variables
+  // Chosen array of characters
+  var pwCharacters = [];
+
+  // Special characters
+  var specialCharStr = " !\"#$%&'()*+,-./:;<=>?@[]^_`{|}~";
+
+  // Setup password criteria variables
   var useLowercase = false;
   var useUppercase = false;
   var useNumeric = false;
   var useSpecial = false;
 
 
-  
+
   // Prompt for the password length
   var pwLength = prompt("How long should the password be? Enter a whole number between 8 and 128.");
 
@@ -52,6 +58,38 @@ function generatePassword() {
     }
   }
 
+
+
+  // Build the array of chosen characters to use in the password
+  if(useLowercase){
+    // Lowercase characters are character codes 97 - 122
+    for(var i = 97; i <= 122; i++){
+      pwCharacters.push(String.fromCharCode(i));
+    }
+  }
+
+  if(useUppercase){
+    // Uppercase characters are character codes 65 - 90
+    for(var i = 65; i <= 90; i++){
+      pwCharacters.push(String.fromCharCode(i));
+    }
+  }
+
+  if(useNumeric){
+    // For numbers, it is more readable to use the toString function while looping i from 0 - 9
+    for(var i = 0; i <= 9; i++){
+      pwCharacters.push(i.toString());
+    }
+  }
+
+  if(useSpecial){
+    // Split the string of special characters into an array
+    var specialCharArray = specialCharStr.split("");
+    // Concatinate the array of special characters to the end of the pwCharacters array
+    pwCharacters = pwCharacters.concat(specialCharArray);
+  }
+
+  console.log(pwCharacters);
 
 }
 
