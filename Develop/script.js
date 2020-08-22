@@ -3,7 +3,7 @@ function generatePassword() {
   // Chosen array of characters
   var pwCharacters = [];
 
-  // Special characters
+  // Special characters from https://owasp.org/www-community/password-special-characters
   var specialCharStr = " !\"#$%&'()*+,-./:;<=>?@[]^_`{|}~";
 
   // Setup password criteria variables
